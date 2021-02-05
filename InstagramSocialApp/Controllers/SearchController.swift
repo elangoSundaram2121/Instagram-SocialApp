@@ -1,22 +1,18 @@
 //
-//  ViewController.swift
+//  SearchController.swift
 //  InstagramSocialApp
 //
-//  Created by Balachandar S on 03/02/21.
+//  Created by Balachandar S on 04/02/21.
 //  Copyright © 2021 Balachandar S. All rights reserved.
 //
 
 import UIKit
 
-class ViewController: UIViewController {
-
+class SearchController: UIViewController {
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        view.backgroundColor = .blue
     }
     
-    
-
-
 }
-
