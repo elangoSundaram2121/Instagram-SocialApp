@@ -25,7 +25,7 @@ class LoginController: UIViewController {
     }()
     
     private let passwordTextField : CustomTextField = {
-          let textField = CustomTextField(placeholder: "Email")
+          let textField = CustomTextField(placeholder: "Password")
         textField.isSecureTextEntry = true
           return textField
       }()
@@ -72,8 +72,18 @@ class LoginController: UIViewController {
     //MARK : Actions
     
     @objc private func handleLogin(){
-        
-        
+        guard let email = emailTextField.text else{return}
+        guard let pass = passwordTextField.text else{return}
+        AuthService.login(withEmail: email, withPassword: pass) { (result, error) in
+            
+            if let error = error{
+                print("cant able to login\(error.localizedDescription)")
+            }
+            else{
+                
+            }
+            
+        }
         
     }
     
@@ -84,9 +94,12 @@ class LoginController: UIViewController {
        }
     
     @objc private func handleSignUp(){
-           
-           
-           
+        print("SignUp pressed")
+           let controller = RegisterController()
+        let navigationController = UINavigationController(rootViewController: controller)
+        navigationController.modalPresentationStyle = .fullScreen
+        self.present(navigationController, animated: true, completion: nil)
+//        present(controller, animated: true, completion: nil)
        }
     
     
@@ -94,6 +107,9 @@ class LoginController: UIViewController {
     //MARK : HELPERS
     
     func configureUI(){
+        
+        navigationController?.navigationBar.isHidden = true
+        navigationController?.navigationBar.barStyle = .black
         
         view.addSubview(iconImageView)
         iconImageView.centerX(inView: view)
